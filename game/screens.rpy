@@ -563,7 +563,7 @@ screen about():
             if gui.about:
                 text "[gui.about!t]\n"
 
-            text _("Made with {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]")
+            text _("Writing and programming: Noora \"WindySilver\" Jokela.\nArt used: Anime Backgrounds, Miki - Free Character Sprite, Hana - Free Character Sprite and Sora - Free Character Sprite and Chie - Free Character Sprite all by {a=https://noranekogames.itch.io/}Noraneko Games{/a}.\n\nMade with {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]")
 
 
 style about_label is gui_label

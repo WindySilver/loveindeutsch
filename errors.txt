@@ -1,0 +1,10 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/script.rpy", line 21: invalid syntax
+    im.Scale("Chie/Casual/Chie_Casual_Smile.png", 585, 9h0)
+                                                          ^
+
+Ren'Py Version: Ren'Py 7.4.11.2266
+Thu Jun 16 14:19:54 2022

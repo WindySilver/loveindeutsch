@@ -1,0 +1,26 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+  File "game/script.rpy", line 50, in script
+    python:
+  File "game/script.rpy", line 59, in <module>
+    if names.size > 1:
+AttributeError: 'list' object has no attribute 'size'
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "game/script.rpy", line 50, in script
+    python:
+  File "/home/noora/devel/renpy/renpy/ast.py", line 928, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "/home/noora/devel/renpy/renpy/python.py", line 2245, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "game/script.rpy", line 59, in <module>
+    if names.size > 1:
+AttributeError: 'list' object has no attribute 'size'
+
+Linux-5.13.0-48-generic-x86_64-with-debian-bullseye-sid
+Ren'Py 7.4.11.2266
+Love in Deutsch 1.0
+Thu Jun 16 12:21:10 2022
