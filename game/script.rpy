@@ -13,6 +13,10 @@ define js = Character("Jasmine Stones")
 define j = Character("Jasmine")
 define n = Character("Nemo")
 define p = Character("Patrick Mason")
+define jj = Character("Joshua Jameson")
+define sl = Character("Sara Lovelock")
+define er = Character("Eileen Riverside")
+define als = Character("Alex Svensson")
 
 # Declare character sprites
 image ivy side casual frown = im.Scale("Miki/Pose_C/Casual/Miki_PoseC_Casual_Frown.png", 270, 785.4)
@@ -100,9 +104,9 @@ label classroom:
         
         show patrick casual smile at left
         
-        "Teacher" "Hello and welcome to German Basics. I'm glad to see so many of you here. My name is [p]. If you need to refer to me with pronouns, please use he/him."
+        "Teacher" "Guten Tag! Welcome to German Basics. I'm glad to see so many of you here. My name is [p]. If you need to refer to me with pronouns, please use he/him."
         
-        p "First, let's have a roll call so I can connect the names to your faces. Joshua Jameson?"
+        p "First, let's have a roll call so I can connect the names to your faces. [jj]?"
         
         "An old man" "Present."
         
@@ -110,7 +114,7 @@ label classroom:
         
         y "Here."
         
-        p "Sara Lovelock?"
+        p "[sl]?"
         
         "A black-haired woman" "Here!"
         
@@ -125,9 +129,9 @@ label classroom:
         
         "You cannot say that they look similar. Perhaps it's just a coincidence that they share the surname?"
         
-        hide ivy side casual frown
+        hide ivy
         
-        p "Eileen Riverside?"
+        p "[er]?"
         
         "A middle-aged woman" "Present."
         
@@ -139,7 +143,7 @@ label classroom:
         
         js "Here!"
         
-        hide jasmine casual up smile
+        hide jasmine
         
         p "Please have your conversation with your friend when the lesson isn't ongoing, Stones. [rg]?"
         
@@ -149,11 +153,11 @@ label classroom:
         
         rg "Present..."
         
-        hide roger casual frown
+        hide roger
         
         p "The same instructions to you as well, Gale."
         
-        p "And last but not least, Alex Svensson."
+        p "And last but not least, [als]."
         
         "A younger man" "Here."
         
@@ -168,5 +172,85 @@ label classroom:
         p "I was already studying to become a language teacher, but at the time I was majoring in Latin. I ended up finding a truer passion for German, however, and now I am here."
         
         p "That's my story. Who wants to go next?"
+        
+        "..."
+        
+        jj "I can go next. I retired recently and now I finally have some time to study languages. I have wanted to study German for years."
+        
+        er "I'm heading to Austria for a business trip, to I need some understanding of German."
+        
+        sl "I'm going on the same trip as Eileen. I did study German in school, but it's been years and I've forgotten everything, so I decided to come with."
+        
+        show jasmine casual up smile at right
+        
+        js "I've been really itching to learn some German to talk with some of my friends online and I decided that now's the best time to do that!"
+        
+        js "Now's better than tomorrow, right, Roger?"
+        
+        show roger casual frown at middle
+        
+        rg "Yeah..."
+        
+        rg "*sigh* Honestly, my reason to be here is that Jasmine dragged me along."
+        
+        p "Well, I hope that you'll get a good learning experience nevertheless." 
+        hide jasmine
+        hide roger
+        
+        menu:
+            p "What about you, [last_name]?"
+            
+            "I saw an ad about it at the local café and got interested":
+                p "Oh, that's very nice. Good to know that the ads did do something."
+                
+                als "I came because of the ads too."
+            "I wanted to start learning German.":
+                als "Same here."
+            
+            "I want to make more friends.":
+                p "Then you have come to the right place. Language courses like this are perfect for getting to know people and forming friendships!"
+                
+                als "I want to make some new friends too."
+                
+        p "Very well. [iv], what about you?"
+        
+        "[ivm] rolls her eyes again."
+        
+        show ivy side casual frown at right
+        
+        ivm "Because my dad told me to."
+        
+        "Patrick chuckles."
+        
+        p "I see you're not motivated. Still, I'm sure that this course will be useful for you."
+        
+        ivm "Sure, whatever..."
+        
+        hide ivy
+        
+        p "Well then, now that the introductions are done, I'll tell you about how this course works..."
+        
+        jump outside
+    $ lesson = lesson+1
+
+label outside:
     
+    if lesson == 1:
+        
+        scene school_hallway_day
+        
+        "Your head is filled with information on what the course consists of and the tests and homework you will need to do to pass."
+        
+        "This had better be worth it."
+        
+        "You see [rg] and [js] talking with one another. You take a few steps towards them, hoping you could talk to them, but their conversation seems to turn into an argument."
+        
+        "It's probably for the best not to get involved. You turn back and head home. Perhaps you'll have better luck with the next lesson when everything is supposed to truly kick off..."
+        
+        # TODO Restructure this into different files
+                
+                
+        
+        
+        
     return
