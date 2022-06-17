@@ -17,6 +17,7 @@ define jj = Character("Joshua Jameson")
 define sl = Character("Sara Lovelock")
 define er = Character("Eileen Riverside")
 define als = Character("Alex Svensson")
+define e = Character("Everyone")
 
 # Declare character sprites
 image ivy side casual frown = im.Scale("Miki/Pose_C/Casual/Miki_PoseC_Casual_Frown.png", 270, 785.4)
@@ -28,7 +29,13 @@ image patrick casual smile = im.Scale("Chie/Casual/Chie_Casual_Smile.png", 523, 
 # The game starts here.
 
 label start:
-    
+    python:
+        # Initialize the status of notes taken on each lesson. Lesson 0 has no notes, so it can be whatever. True is default for it.
+        notes = [True, False, False, False, False, False, False, False, False]
+        ivy_approve = 3
+        roger_approve = 5
+        jasmine_approve = 7
+        
     scene cafeteria_day
     
     "You sit down at a table with a mug of cocoa. For once, it's a quiet day at the café. Perfect for meeting up with Tamera."
@@ -60,9 +67,6 @@ label start:
     python:
         full_name = "Morgan Stevens"
         lesson = 0
-
-        # Initialize the status of notes taken on each lesson. Lesson 0 has no notes, so it can be whatever. True is default for it.
-        notes = [True, False, False, False, False, False, False, False, False]
         full_name = renpy.input("Name: ", full_name, length=32)
         full_name = full_name.strip()
         if not full_name:

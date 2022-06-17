@@ -141,7 +141,7 @@ label classroom:
         menu:
             "You realize that maybe you should take notes, if only to help with revising things later on."
 
-            "Take notes":
+            "You'll take notes.":
                 "You take out your pencil and notebook and start writing things down."
                 $ notes[1] = True
             "Nah, you'll be fine with just the material.":
@@ -149,10 +149,114 @@ label classroom:
 
         p "\"Hello\", on the other hand, is easier to remember. It's \"hallo\"."
 
-        menu:
-            "Let me check my notes":
-                $renpy.call_screen("notes")
+        p "There are other ways to say hello, of course, depending on the area. For example, \"grüezi\" is a Swiss German way to say hello, while in Austria you might be greeted with \"Grüß Gott\"."
 
-        p "There are other ways to say hello, of course, depending on the area."
+        p "If you want to say \"goodbye\" in German, you can say \"auf Wiedersehen\"."
+
+        p "We will discuss greetings and goodbyes in greater detail on a later lesson. Now, let's move on to numbers."
+
+        "The slide changes to show a list of numbers."
+
+        p "Let's count from zero. Repeat after me: null."
+
+        e "Null."
+
+        p "Eins."
+
+        e "Eins."
+
+        p "Zwei."
+
+        e "Zwei."
+
+        p "Drei."
+
+        e "Drei."
+
+        "You overhear [js] whisper to her friend between the numbers behind your back."
+
+        show jasmine casual up smile
+
+        js "Polizei."
+
+        "You hear [rg] snort. The teacher gives the duo a look, so you don't turn around to look at them. Then the counting continues as if nothing had happened."
+
+        hide jasmine
+
+        p "Vier."
+
+        e "Vier."
+
+        p "Fünf."
+
+        e "Fünf."
+
+        p "Sechs."
+
+        e "Sechs."
+
+        p "Sieben."
+
+        e "Sieben."
+
+        p "Acht."
+
+        e "Acht."
+
+        p "Neun."
+
+        e "Neun."
+
+        p "Zehn."
+
+        e "Zehn."
+
+        p "Excellent work, everyone. Next, let's get up from the chairs and talk. I want you all to talk to your fellow students at random and have a following discussion: greeting, telling a number of your choice and saying goodbye."
+
+        p "To say \"My number is\n, say \"Meine Nummer ist\"."
+
+        "The room is filled with the sound of scraping chairs. You try to figure out who to talk with. The first one you make eye contact is [rg]. You walk up to him."
+
+        show sora casual frown
+
+        rg "Hello. I-I mean hallo. Uh, meine Nummer ist..."
+
+        rg "Um... null..."
+
+        y "Hallo. Meine Nummer ist... Er..."
+
+        python:
+            numbers_right = ["null", "eins", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun", "zehn"]
+            numbers_wrong = ["noll", "einz", "swei", "trei", "viir", "funf", "zechs", "seben", "aht", "nein", "sehn"]
+            chosen_number = random.randrange(0, 10, 1)
+
+        "You realize that you did not even think of a number, so you pick the first one that comes to your mind. [chosen_number]!"
+
+        menu:
+            y "Meine Nummer ist..."
+
+            "[numbers_wrong[chosen_number]":
+                rg "Uh... Wasn't it... Nevermind. Auf Wiedersehen."
+                y "Auf Wiedersehen."
+            "[numbers_right[chosen_number]":
+                rg "Auf Weidersehen."
+            "zwala":
+                $ roger_approve -= 1
+                "[rg] frowns at you."
+                rg "I'm pretty sure it's [numbers_right[chosen_number]."
+                y "Oh."
+                "That definitely did not go well."
+                rg "Auf Wiedersehen."
+        
+        y "Auf Wiedersehen."
+
+
+
+
+        
+
+        
+
+
     $ lesson = lesson+1
     jump outside
