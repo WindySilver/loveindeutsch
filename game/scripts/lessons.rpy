@@ -134,7 +134,25 @@ label classroom:
         
     if lesson == 1:
 
-        p "Guten Abend. That's German for \"Good evening\". Today, we will cover greetings."
+        p "Guten Abend. That's German for \"Good evening\". Today, we will cover greetings and the numbers from 0 to 10."
 
+        p "First, greetings. Like I said earlier, \"guten Abend\" means \"good evening\". To say \"good afternoon\", you say \"guten Tag\"."
+
+        menu:
+            "You realize that maybe you should take notes, if only to help with revising things later on."
+
+            "Take notes":
+                "You take out your pencil and notebook and start writing things down."
+                $ notes[1] = True
+            "Nah, you'll be fine with just the material.":
+                "You decide not to take notes and simply listen to the teacher."
+
+        p "\"Hello\", on the other hand, is easier to remember. It's \"hallo\"."
+
+        menu:
+            "Let me check my notes":
+                $renpy.call_screen("notes")
+
+        p "There are other ways to say hello, of course, depending on the area."
     $ lesson = lesson+1
     jump outside

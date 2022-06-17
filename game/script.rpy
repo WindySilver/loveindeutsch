@@ -60,6 +60,9 @@ label start:
     python:
         full_name = "Morgan Stevens"
         lesson = 0
+
+        # Initialize the status of notes taken on each lesson. Lesson 0 has no notes, so it can be whatever. True is default for it.
+        notes = [True, False, False, False, False, False, False, False, False]
         full_name = renpy.input("Name: ", full_name, length=32)
         full_name = full_name.strip()
         if not full_name:

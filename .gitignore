@@ -1,2 +1,4 @@
 *.save
 .vscode
+errors.txt
+traceback.txt
