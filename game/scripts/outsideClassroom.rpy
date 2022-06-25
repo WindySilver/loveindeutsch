@@ -14,6 +14,17 @@ label outside:
         
         jump home
 
+    if lesson == 2:
+        
+        scene school_hallway_day
+
+        "You look around, hoping to spot familiar faces. To your surprise, you see [ivm] talking with [rg] and [js]. Or maybe it's the other way around."
+
+        "Anyhow, you figure this might be a good time to try and talk with them."
+
+        # TODO The rest of the conversation, Roger reacting differently to you if you made stuff up when talking with him during the lesson, the group agreeing to do homework together on the following day
+
+
 label home:
 
     if lesson == 1:

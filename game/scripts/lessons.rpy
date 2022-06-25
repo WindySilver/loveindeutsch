@@ -230,28 +230,51 @@ label classroom:
             numbers_wrong = ["noll", "einz", "swei", "trei", "viir", "funf", "zechs", "seben", "aht", "nein", "sehn"]
             chosen_number = random.randrange(0, 10, 1)
 
-        "You realize that you did not even think of a number, so you pick the first one that comes to your mind. [chosen_number]!"
+        "You realize that you did not even think of a number, so you pick the first one that comes to your mind... [chosen_number]!"
 
         menu:
             y "Meine Nummer ist..."
 
-            "[numbers_wrong[chosen_number]":
+            "[numbers_wrong[chosen_number]]":
                 rg "Uh... Wasn't it... Nevermind. Auf Wiedersehen."
-                y "Auf Wiedersehen."
-            "[numbers_right[chosen_number]":
+            "[numbers_right[chosen_number]]":
                 rg "Auf Weidersehen."
             "zwala":
                 $ roger_approve -= 1
                 "[rg] frowns at you."
-                rg "I'm pretty sure it's [numbers_right[chosen_number]."
+                rg "I'm pretty sure that's not a number, at least not one we just learned."
                 y "Oh."
                 "That definitely did not go well."
                 rg "Auf Wiedersehen."
         
         y "Auf Wiedersehen."
 
+        hide roger
 
+        "You turn to look at other people. Your eyes meet [sl]'s."
 
+        sl "Hallo! Meine Nummer ist drei."
+
+        menu:
+            y "Hallo. Meine Nummer ist..."
+
+            "[numbers_wrong[chosen_number]]":
+                sl "Hmm. I think it was [numbers_right[chosen_number]]. Auf Wiedersehen."
+                y "Auf Wiedersehen."
+            "[numbers_right[chosen_number]]":
+                sl "Auf Weidersehen."
+            "zwala":
+                "[sl] frowns at you."
+                sl "Are you even trying?"
+                y "Huh?"
+                sl "That isn't a German number. You should take notes during the lesson and check them when you don't know the answer rather than coming up with nonsense, you know."
+                "Whoops."
+                y "Oh..."
+                sl "Auf Wiedersehen."
+
+        y "Auf Wiedersehen."
+
+        "Before you managed to make eye contact with someone else, the lesson was over. You headed outside, hoping that this time you could find someone to talk with."
 
         
 
