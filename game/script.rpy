@@ -22,7 +22,9 @@ define e = Character("Everyone")
 # Declare character sprites
 image ivy side casual frown = im.Scale("Miki/Pose_C/Casual/Miki_PoseC_Casual_Frown.png", 270, 785.4)
 image jasmine casual up smile = im.Scale("Hana/Casual/Hana_casual_smile.png", 464.4, 894.6)
+image jasmine casual up frown = im.Scale("Hana/Casual/Hana_casual_neutral.png", 464.4, 894.6)
 image roger casual frown = im.Scale("Sora/Casual/Sora_Casual_Frown.png", 367.2, 924)
+image roger casual smile = im.Scale("Sora/Casual/Sora_Casual_Smile.png", 367.2, 924)
 image patrick casual smile = im.Scale("Chie/Casual/Chie_Casual_Smile.png", 523, 850)
 
 
@@ -32,9 +34,30 @@ label start:
     python:
         # Initialize the status of notes taken on each lesson. Lesson 0 has no notes, so it can be whatever. True is default for it.
         notes = [True, False, False, False, False, False, False, False, False]
-        ivy_approve = 3
-        roger_approve = 5
-        jasmine_approve = 7
+
+        # If character's approval level falls to this, they will stop wanting to spend time with you. The player cannot recover from this.
+        # TODO Maybe make booleans for each character's approval falling to abandon_level as a failsafe or to tidy up checks?
+        abandon_level = 0
+
+        # The lowest neutral approval levels for each character, needed for comparisons that need to be made during the game. 
+        ivy_approve_neutral_low = 3
+        roger_approve_neutral_low = 5
+        jasmine_approve_neutral_low = 7
+
+        # The lowest friendship approval levels for each character, needed for comparisons that need to be made during the game. 
+        ivy_approve_friend_low = 11
+        roger_approve_friend_low = 10
+        jasmine_approve_friend_low = 9
+
+        # The lowest romance approval levels for each character, needed for comparisons that need to be made during the game. 
+        ivy_approve_romance_low = 20
+        roger_approve_romance_low = 18
+        jasmine_approve_romance_low = 16
+
+        # The approval trackers for the characters. Set to the lowest neutral as default in the beginning.
+        ivy_approve = ivy_approve_neutral_low
+        roger_approve = roger_approve_neutral_low
+        jasmine_approve = jasmine_approve_neutral_low
         
     scene cafeteria_day
     
@@ -104,3 +127,16 @@ label start:
     jump classroom
         
 return
+
+label all_approve:
+    python:
+        roger_approve += 1
+        jasmine_approve += 1
+        ivy_approve += 1
+        
+
+label all_disapprove:
+    python:
+        roger_approve -= 1
+        jasmine_approve -= 1
+        ivy_approve -= 2

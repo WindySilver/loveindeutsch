@@ -217,7 +217,7 @@ label classroom:
 
         "The room is filled with the sound of scraping chairs. You try to figure out who to talk with. The first one you make eye contact is [rg]. You walk up to him."
 
-        show sora casual frown
+        show roger casual frown
 
         rg "Hello. I-I mean hallo. Uh, meine Nummer ist..."
 
@@ -228,16 +228,18 @@ label classroom:
         python:
             numbers_right = ["null", "eins", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun", "zehn"]
             numbers_wrong = ["noll", "einz", "swei", "trei", "viir", "funf", "zechs", "seben", "aht", "nein", "sehn"]
-            chosen_number = random.randrange(0, 10, 1)
+            chosen_number = renpy.random.randint(0, 10)
+            wrong = numbers_wrong[chosen_number]
+            correct = numbers_right[chosen_number]
 
         "You realize that you did not even think of a number, so you pick the first one that comes to your mind... [chosen_number]!"
 
         menu:
             y "Meine Nummer ist..."
 
-            "[numbers_wrong[chosen_number]]":
+            "[wrong]":
                 rg "Uh... Wasn't it... Nevermind. Auf Wiedersehen."
-            "[numbers_right[chosen_number]]":
+            "[correct]":
                 rg "Auf Weidersehen."
             "zwala":
                 $ roger_approve -= 1
@@ -258,10 +260,10 @@ label classroom:
         menu:
             y "Hallo. Meine Nummer ist..."
 
-            "[numbers_wrong[chosen_number]]":
-                sl "Hmm. I think it was [numbers_right[chosen_number]]. Auf Wiedersehen."
+            "[wrong]":
+                sl "Hmm. I think it was [correct]. Auf Wiedersehen."
                 y "Auf Wiedersehen."
-            "[numbers_right[chosen_number]]":
+            "[correct]":
                 sl "Auf Weidersehen."
             "zwala":
                 "[sl] frowns at you."
