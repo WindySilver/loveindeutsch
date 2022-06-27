@@ -47,14 +47,14 @@ label start:
         jasmine_approve_neutral_low = 7
 
         # The lowest friendship approval levels for each character, needed for comparisons that need to be made during the game. 
-        ivy_approve_friend_low = 11
-        roger_approve_friend_low = 10
-        jasmine_approve_friend_low = 9
+        ivy_approve_friend_low = 5 # The one in final version should be 11 but for the short prototype it'll be lower
+        roger_approve_friend_low = 7 # The one in final version should be 10 but for the short prototype it'll be lower
+        jasmine_approve_friend_low = 8 # The one in final version should be 9 but for the short prototype it'll be lower
 
         # The lowest romance approval levels for each character, needed for comparisons that need to be made during the game. 
-        ivy_approve_romance_low = 20
-        roger_approve_romance_low = 18
-        jasmine_approve_romance_low = 16
+        ivy_approve_romance_low = 8 # The one in final version should be 20 but for the short prototype it'll be lower
+        roger_approve_romance_low = 10 # The one in final version should be 18 but for the short prototype it'll be lower
+        jasmine_approve_romance_low = 10 # The one in final version should be 16 but for the short prototype it'll be lower
 
         # The approval trackers for the characters. Set to the lowest neutral as default in the beginning.
         ivy_approve = ivy_approve_neutral_low
