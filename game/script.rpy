@@ -35,9 +35,11 @@ label start:
         # Initialize the status of notes taken on each lesson. Lesson 0 has no notes, so it can be whatever. True is default for it.
         notes = [True, False, False, False, False, False, False, False, False]
 
-        # If character's approval level falls to this, they will stop wanting to spend time with you. The player cannot recover from this.
-        # TODO Maybe make booleans for each character's approval falling to abandon_level as a failsafe or to tidy up checks?
+        # If character's approval level falls to this number, they will stop wanting to spend time with you. The player cannot recover from hitting this.
         abandon_level = 0
+        ivy_abandon = false
+        roger_abandon = false
+        jasmine_abandon = false
 
         # The lowest neutral approval levels for each character, needed for comparisons that need to be made during the game. 
         ivy_approve_neutral_low = 3
@@ -130,9 +132,12 @@ return
 
 label all_approve:
     python:
-        roger_approve += 1
-        jasmine_approve += 1
-        ivy_approve += 1
+        if not roger_abandon:
+            roger_approve += 1
+        if not jasmine_abandon:
+            jasmine_approve += 1
+        if not ivy_abandon:
+            ivy_approve += 1
         
 
 label all_disapprove:

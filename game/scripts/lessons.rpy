@@ -213,7 +213,7 @@ label classroom:
 
         p "Excellent work, everyone. Next, let's get up from the chairs and talk. I want you all to talk to your fellow students at random and have a following discussion: greeting, telling a number of your choice and saying goodbye."
 
-        p "To say \"My number is\n, say \"Meine Nummer ist\"."
+        p "To say \"My number is\", say \"Meine Nummer ist\"."
 
         "The room is filled with the sound of scraping chairs. You try to figure out who to talk with. The first one you make eye contact is [rg]. You walk up to him."
 
@@ -240,7 +240,7 @@ label classroom:
             "[wrong]":
                 rg "Uh... Wasn't it... Nevermind. Auf Wiedersehen."
             "[correct]":
-                rg "Auf Weidersehen."
+                rg "Auf Wiedersehen."
             "zwala":
                 $ roger_approve -= 1
                 "[rg] frowns at you."

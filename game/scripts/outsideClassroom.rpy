@@ -257,10 +257,112 @@ label cafe:
 
         y "Sorry, I got lost in thought."
 
-        ivm "Well get lost in thought so that you're not staring at me."
+        ivm "Well get lost in thought without staring at me."
 
-        # TODO the number exercise, setting first-name basis, going home on the same route as Jasmine
+        rg "Shall we move on to the other exercise?"
 
+        ivm "Yeah, let's."
+
+        js "Looks like very basic maths."
+
+        rg "Yeah, we need to solve the calculations and write the answers in German."
+
+        js "{i}Cool...{/i} The things I minored in maths for..."
+
+        show roger casual smile
+
+        "Roger snorts."
+
+        rg "Didn't you always complain about the simple arithmetic mistakes when you worked on your math courses?"
+
+        show jasmine casual up smile
+
+        js "They were {i}the worst{/i}!"
+
+        ivm "Can we {i}please{/i} stay on topic?"
+
+        js "Right, sorry."
+
+        menu:
+
+            js "Anyhoo, the first one's 2+4. Which is 6."
+
+            python:
+                wrong = numbers_wrong[6]
+                correct = numbers_right[6]
+
+            "[correct]":
+                js "Yeah, it's [correct]."
+                jump all_approve
+            "[wrong]":
+                js "Almost. It's actually [correct]."
+            "zere":
+                jump all_disapprove
+                show jasmine casual up frown
+                show roger casual frown
+
+                js "Yeah, no. It's [correct]."
+            
+        if ivy_approve <= abandon_level:
+
+            jump ivy_abandons
+            jump all_disapprove
+
+            rg "Um... How about we move on? The next one's 13-9. That's 4."
+
+            ivm "It's vier."
+
+            "You finish the rest of the exercises in a tense air. [ivm] leaves as soon as she is ready, only barely agreeing on the four of you being on first-name basis."
+
+            "[r] leaves soon afterwards, leaving you and [j] to start walking home once you are done with your exercises."
+        
+        else:
+
+            ivm "Next one's 13-9. It's 4."
+
+            js "That's vier."
+            
+            "You finish the rest of the exercises in a casual air. [ivm] leaves as soon as she is ready, although she pauses just to agree on the four of you being on first-name basis."
+
+            "[r] leaves some time later, leaving you and [j] to start walking home once you are done with your exercises."
+
+        jump walk_home
+
+label walk_home:
+
+    scene street_summer_evening
+
+    show jasmine casual up smile
+
+    js "I didn't expect us to live in the same neighborhood. A small world, huh?"
+
+    y "Yeah, it sure is."
+
+    "Now that you're not focusing on coursework, you notice a distinct yellow-white-purple-black pin on (j]'s bag."
+
+    y "Is that pin on your bag the non-binary flag?"
+
+    js "Yeah, it is. It's actually the first LGBT thing I ever got as a gift. [r] gave it to as a gift after I came out to him as an enby."
+
+    js "Heh, he was the first one I ever even came out to. We've been besties since we were kids, so it was only natural that he was the first one to officially know."
+
+    y "You think he suspected it before?"
+
+    js "Well, considering that he was the one who suggested I look into the enby stuff in the first place, you bet he suspected something. And he suspected right."
+
+    y "That's really cool."
+
+    js "Yeah, it is. [r]'s really cool when he warms up to you, y'know. It takes time, but he's worth the patience he takes."
+
+    y "I'll keep that in mind."
+
+    js "You'd better."
+
+    js "Welp, this is where we have to go separate paths. See you on the next lesson, okay?"
+
+    y "See you then."
+
+    jump classroom
 
 
 
