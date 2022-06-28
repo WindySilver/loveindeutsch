@@ -9,6 +9,8 @@ screen notes():
                 if noteIndex == 1:
                     noteText = noteText + "{a=showmenu:note_greetings}Greetings{/a}\n"
                     noteText = noteText + "{a=showmenu:note_0_10}Numbers 0-10{/a}\n"
+                if noteIndex == 2:
+                    noteText = noteText + "{a=showmenu:morning_present}Presenting oneself + good morning{/a}\n"
                 else:
                     noteText = noteText + ""
             noteIndex += 1
@@ -42,12 +44,16 @@ screen show_note(heading, notesText):
 
 label note_greetings:
 
-    $renpy.call_screen("show_note", heading="Greetings", notesText="Guten Abend = Good evening\nGuten Tag = Good day\nHallo/Grüezi/Grüß Gott = Hello\nAuf Wiedersehen = Goodbye")
+    $ renpy.call_screen("show_note", heading="Greetings", notesText="Guten Abend = Good evening\nGuten Tag = Good day\nHallo/Grüezi/Grüß Gott = Hello\nAuf Wiedersehen = Goodbye")
 
     return
 
 label note_0_10:
 
-    $renpy.call_screen("show_note", heading="Numbers 0-10", notesText="0 = null\n1 = eins\n2 = zwei\n3 = drei\n4 = vier\n5 = fünf\n6 = sechs\n7 = sieben\n8 = acht\n9 = neun\n10 = zehn")
+    $ renpy.call_screen("show_note", heading="Numbers 0-10", notesText="0 = null\n1 = eins\n2 = zwei\n3 = drei\n4 = vier\n5 = fünf\n6 = sechs\n7 = sieben\n8 = acht\n9 = neun\n10 = zehn")
 
     return
+
+label morning_present:
+
+    $ renpy.call_screen("show_note", heading="Presenting oneself + good morning", notesText="Good morning = Guten Morgen\nbe named = heißen\nMy name is Patrick = Ich heiße Patrick\nI am Patrick = Ich bin Patrick\nShe is Lisa = Sie ist Lisa\nNice to meet you = Freut mich\nHow are you = wie geht's dir (with friends) or wie geht's Ihnen (more polite)")

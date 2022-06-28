@@ -29,7 +29,7 @@ label classroom:
         show ivy side casual frown at right
         ivm "Present."
         
-        "You cannot say that they look similar. Perhaps it's just a coincidence that they share the surname?"
+        "You cannot say that they look similar. Perhap it's just a coincidence that they share the surname?"
         
         hide ivy
         
@@ -282,10 +282,47 @@ label classroom:
 
         show patrick casual smile
 
-        ps "Today, we will discuss greetings and how to present yourself."
+        p "Today, we will discuss greetings and how to present yourself."
 
+        p "Last time, we covered the greetings \"Guten Abend\", \"Guten Tag\" and \"Hallo\"."
 
+        p "While these already cover a lot, we are missing one key phrase; \"Good Morning\", which is \"Guten Morgen\"."
+
+        menu:
+
+            "You realize that you should probably take notes."
         
+            "You'll take notes.":
+                "You take out your pencil and notebook and start writing things down."
+                $ notes[2] = True
+            "Nah, you'll be fine with just the material.":
+                "You decide not to take notes and simply listen to the teacher."
+
+        p "Presenting oneself is the main focus of this lesson. Today, you will learn how to tell your name, how to present someone else and how to say \"nice to meet you\"."
+
+        p "Let's start with telling your name. German has its own verb for \"be named\" - \"heißen\" with Eszett."
+
+        p "We will discuss verb conjugation at a later lesson, but for now you'll need to know that when you speak of yourself, as in \"I\", most verbs lose the \"n\" in the end."
+
+        p "Therefore, \"My name is Patrick\" is \"Ich heiße Patrick\" in German."
+
+        p "You can also tell your name with the irregular \"be\" verb, \"sein\". When you speak of yourself, \"sein\" becomes \"bin\", while speaking of someone else, as in \"he, she or they\", it becomes \"ist\"."
+
+        p "Hence, \"I am Patrick\" becomes \"Ich bin Patrick\" and \"She is Lisa\" becomes \"Sie ist Lisa\"."
+
+        p "As for how to say \"nice to meet you\", it's actually very simple. The phrase is \"freut mich\"."
+
+        p "You've got a question, Lovelock?"
+
+        sl "How do you ask \"how are you\" in German?" 
+
+        p "There are multiple different ways to say it. If the person you are talking with is a friend, you may say \"wie geht's dir\"."
+
+        p "However, if you're not close with the person you're speaking of - for example, you're speaking with someone who ranks higher than you at work - you should say \"wie geht's Ihnen\", which is more polite."
+
+        p "We will discuss the differences between \"du\" and \"ihr\" at a later lesson when we discuss pronouns."
+
+        "This time, there was no exercise in-class due to time constraints. Instead, you had to make sure you learned things properly by doing homework."
 
         
 
