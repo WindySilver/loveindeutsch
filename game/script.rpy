@@ -21,10 +21,15 @@ define e = Character("Everyone")
 
 # Declare character sprites
 image ivy side casual frown = im.Scale("Miki/Pose_C/Casual/Miki_PoseC_Casual_Frown.png", 270, 785.4)
+image ivy side casual smile = im.Scale("Miki/Pose_C/Casual/Miki_PoseC_Casual_Smile.png", 270, 785.4)
 image jasmine casual up smile = im.Scale("Hana/Casual/Hana_casual_smile.png", 464.4, 894.6)
 image jasmine casual up frown = im.Scale("Hana/Casual/Hana_casual_neutral.png", 464.4, 894.6)
 image roger casual frown = im.Scale("Sora/Casual/Sora_Casual_Frown.png", 367.2, 924)
+image roger casual frown blush = im.Scale("Sora/Casual/Sora_Casual_Frown_Blush.png", 367.2, 924)
 image roger casual smile = im.Scale("Sora/Casual/Sora_Casual_Smile.png", 367.2, 924)
+image roger casual smile blush = im.Scale("Sora/Casual/Sora_Casual_Smile_Blush.png", 367.2, 924)
+image roger casual open = im.Scale("Sora/Casual/Sora_Casual_Open.png", 367.2, 924)
+image roger casual open blush = im.Scale("Sora/Casual/Sora_Casual_Open_Blush.png", 367.2, 924)
 image patrick casual smile = im.Scale("Chie/Casual/Chie_Casual_Smile.png", 523, 850)
 
 
@@ -37,9 +42,9 @@ label start:
 
         # If character's approval level falls to this number, they will stop wanting to spend time with you. The player cannot recover from hitting this.
         abandon_level = 0
-        ivy_abandon = false
-        roger_abandon = false
-        jasmine_abandon = false
+        ivy_abandon = False
+        roger_abandon = False
+        jasmine_abandon = False
 
         # The lowest neutral approval levels for each character, needed for comparisons that need to be made during the game. 
         ivy_approve_neutral_low = 3
@@ -138,6 +143,7 @@ label all_approve:
             jasmine_approve += 1
         if not ivy_abandon:
             ivy_approve += 1
+    return
         
 
 label all_disapprove:
@@ -145,3 +151,4 @@ label all_disapprove:
         roger_approve -= 1
         jasmine_approve -= 1
         ivy_approve -= 2
+    return

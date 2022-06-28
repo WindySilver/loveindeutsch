@@ -264,7 +264,7 @@ label classroom:
                 sl "Hmm. I think it was [correct]. Auf Wiedersehen."
                 y "Auf Wiedersehen."
             "[correct]":
-                sl "Auf Weidersehen."
+                sl "Auf Wiedersehen."
             "zwala":
                 "[sl] frowns at you."
                 sl "Are you even trying?"
@@ -277,11 +277,18 @@ label classroom:
         y "Auf Wiedersehen."
 
         "Before you managed to make eye contact with someone else, the lesson was over. You headed outside, hoping that this time you could find someone to talk with."
+    
+    if lesson == 2:
+
+        show patrick casual smile
+
+        ps "Today, we will discuss greetings and how to present yourself."
+
 
         
 
         
 
 
-    $ lesson = lesson+1
+    $ lesson += 1
     jump outside

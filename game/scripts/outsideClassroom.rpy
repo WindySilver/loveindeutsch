@@ -194,6 +194,8 @@ label cafe:
 
         "At 18.30, you and your fellow German students gather around a table in the corner, books and drinks ready."
 
+        show roger casual smile at center
+
         show jasmine casual up smile at right
 
         js "So, simple greetings and numbers 0-10. Shall we get started?"
@@ -228,7 +230,7 @@ label cafe:
 
                 rg "Right. \"Guten Abend.\""
                 
-                jump all_approve
+                call all_approve
             
             "Abent.":
 
@@ -236,7 +238,7 @@ label cafe:
             
             "Afternt.":
 
-                jump all_disapprove
+                call all_disapprove
 
                 show jasmine casual up frown
 
@@ -283,21 +285,21 @@ label cafe:
 
         js "Right, sorry."
 
+        python:
+            wrong = numbers_wrong[6]
+            correct = numbers_right[6]
+
         menu:
 
             js "Anyhoo, the first one's 2+4. Which is 6."
 
-            python:
-                wrong = numbers_wrong[6]
-                correct = numbers_right[6]
-
             "[correct]":
                 js "Yeah, it's [correct]."
-                jump all_approve
+                call all_approve
             "[wrong]":
                 js "Almost. It's actually [correct]."
             "zere":
-                jump all_disapprove
+                call all_disapprove
                 show jasmine casual up frown
                 show roger casual frown
 
@@ -306,7 +308,7 @@ label cafe:
         if ivy_approve <= abandon_level:
 
             jump ivy_abandons
-            jump all_disapprove
+            call all_disapprove
 
             rg "Um... How about we move on? The next one's 13-9. That's 4."
 
@@ -330,39 +332,42 @@ label cafe:
 
 label walk_home:
 
-    scene street_summer_evening
+    if lesson == 2:
 
-    show jasmine casual up smile
+        scene street_summer_evening
 
-    js "I didn't expect us to live in the same neighborhood. A small world, huh?"
+        show jasmine casual up smile
 
-    y "Yeah, it sure is."
+        js "I didn't expect us to live in the same neighborhood. A small world, huh?"
 
-    "Now that you're not focusing on coursework, you notice a distinct yellow-white-purple-black pin on (j]'s bag."
+        y "Yeah, it sure is."
 
-    y "Is that pin on your bag the non-binary flag?"
+        "Now that you're not focusing on coursework, you notice a distinct yellow-white-purple-black pin on [j]'s bag."
 
-    js "Yeah, it is. It's actually the first LGBT thing I ever got as a gift. [r] gave it to as a gift after I came out to him as an enby."
+        y "Is that pin on your bag the non-binary flag?"
 
-    js "Heh, he was the first one I ever even came out to. We've been besties since we were kids, so it was only natural that he was the first one to officially know."
+        js "Yeah, it is. It's actually the first LGBT thing I ever got as a gift. [r] gave it to as a gift after I came out to him as an enby."
 
-    y "You think he suspected it before?"
+        js "Heh, he was the first one I ever even came out to. We've been besties since we were kids, so it was only natural that he was the first one to officially know."
 
-    js "Well, considering that he was the one who suggested I look into the enby stuff in the first place, you bet he suspected something. And he suspected right."
+        y "You think he suspected it before?"
 
-    y "That's really cool."
+        js "Well, considering that he was the one who suggested I look into the enby stuff in the first place, you bet he suspected something. And he suspected right."
 
-    js "Yeah, it is. [r]'s really cool when he warms up to you, y'know. It takes time, but he's worth the patience he takes."
+        y "That's really cool."
 
-    y "I'll keep that in mind."
+        js "Yeah, it is. [r]'s really cool when he warms up to you, y'know. It takes time, but he's worth the patience he takes."
 
-    js "You'd better."
+        y "I'll keep that in mind."
 
-    js "Welp, this is where we have to go separate paths. See you on the next lesson, okay?"
+        js "You'd better."
 
-    y "See you then."
+        if jasmine_approve >= jasmine_approve_friend_low:
+            call jasmine_friended
 
-    jump classroom
+        js "Welp, this is where we have to go separate paths. See you on the next lesson, okay?"
 
+        y "See you then."
 
+        jump classroom
 
