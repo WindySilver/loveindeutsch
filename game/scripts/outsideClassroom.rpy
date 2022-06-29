@@ -139,7 +139,8 @@ label outside:
 
             "This would be an excellent way to get to know [j] and [r] more. Then again, you could perhaps get through to [iv] too if you studied with her."
 
-            "[iv]":
+            "[iv]" if not ivy_abandon:
+                
                 call all_approve
 
                 y "I'll study with you, [iv]. If it's fine with you."
@@ -546,12 +547,194 @@ label cafe:
                 
                 "You meet [iv] at the cafe at 18.30."
 
-                # TODO The exercise, Ivy friendship check
+                show ivy side casual frown
+
+                y "Hi."
+
+                iv "Hi."
+
+                iv "Let's get this stuff over with."
+
+                "Without any more words, you two got into working on the homework."
+
+                menu:
+
+                    iv "\"My name is...\" and \"I am\". You remember the differences, right?"
+
+                    "Nope.":
+                        $ ivy_approve -= 2
+
+                        iv "..."
+
+                        iv "When are you going to say \"just kidding\"?"
+
+                        y "Um... I'm not?"
+
+                        iv "You've got to be kidding me..."
+
+                        if ivy_approve <= abandon_level and not ivy_abandon:
+                            jump ivy_abandons
+
+                            iv "I think we're done here."
+
+                            "[iv] leaves you alone at the cafe. You are fairly certain that you hear snickering directed towards you but you ignore it to finish your homework alone."
+
+                            "You eventually get the homework done and head back home. Hopefully the next lesson would go better."
+
+
+                    "They use different verbs. Ist and heiße.":
+
+                        iv "Pretty much. The basic forms for the verbs are \"sein\" and \"heißen\", and when used with \"I\" \"sein\" is \"bin\"."
+
+                        y "So, \"ich heiße...\" and \"ich bin\"?"
+
+                        iv "Exactly."
+
+                    "They use different verbs. Sein and heißen."
+
+                        $ ivy_approve += 1
+
+                        iv "Correct. You remember the conjugations?"
+
+                        y "Yup. \"Ich heiße\" and \"ich bin\"."
+
+                        iv "Indeed."
+
+                        iv "Huh. You actually seem to be taking this stuff seriously."
+                
+                iv "Moving on..."
+
+                "You finish the homework in record time thanks to [iv]."
+
+                iv "Well, we're done now. I must say, I'm impressed with you."
+
+                y "Thanks."
+
+                if ivy_approve >= ivy_approve_friend_low and not ivy_friend:
+
+                    iv "..."
+
+                    jump ivy_friended
+                
+                iv "We should call it a day now. See you at school. Or the next lesson."
+
+                "With that, you both leave the cafe. You do not run into each other at school on the following days, instead only meeting when the next lesson starts."
             
             elif study == "jr":
                 
                 "You meet [j] and [r] at the cafe at 16.00."
-                # TODO The exercise, roger and jasmine friendship checks
+
+                show jasmine side casual smile at left
+                show roger casual smile at right
+
+                j "Hi!"
+
+                r "Hi there."
+
+                y "Hi."
+
+                j "So, let's get started, shall we?"
+
+                y "Sure."
+
+                "You start working on the homework once you have your drinks."
+
+                menu:
+
+                    r "\"My name is...\" and \"I am\". [first_name], do you remember the differences?"
+
+                    "Nope.":
+                        $ roger_approve -= 1
+                        $ jasmine_approve -= 1
+
+                        show roger casual frown
+
+                        r "..."
+
+                        r "Um... Alright..."
+
+                        j "\"My name is\" uses the verb \"heißen\" while \"I am\" uses \"sein\"."
+
+                        r "Right."
+
+                    "They use different verbs. Ist and heiße.":
+
+                        j "Basically. The basic forms for the verbs are \"sein\" and \"heißen\", and when used with \"I\" \"sein\" is \"bin\"."
+
+                        y "So, \"ich heiße...\" and \"ich bin\"?"
+
+                        j "Precisely."
+
+                    "They use different verbs. Sein and heißen."
+
+                        $ roger_approve += 1
+                        $ jasmine_approve += 1
+
+                        j "Yup! Do you remember the conjugations for them too?"
+
+                        y "Yup. \"Ich heiße\" and \"ich bin\"."
+
+                        r "Oh, right, those were it. Thanks."
+                
+                j "Alright, so, the next task is..."
+
+                "You finish the homework in record time thanks to [j] and [r]."
+
+                j "Aaand that's done! Woo!"
+
+                j "I'll be right back. Gotta use the toilet."
+
+                hide jasmine
+
+                if roger_approve >= roger_approve_friend_low and not roger_friend:
+
+                    r "That went surprisingly well."
+
+                    r "..."
+
+                    jump roger_friended
+
+                else:
+                    
+                    r "Well, that went well."
+
+                    r "You feel you're starting to get a grip on this yet?"
+
+                    y "I think I am."
+
+                    r "That's nice."
+
+                show jasmine casual up smile
+
+                j "Aaand I'm back! You ready to head out?"
+
+                y "Yeah."
+
+                if roger_approve <= abandon_level and not roger_abandon:
+
+                    r "Yeah. I just need to exchange a few words with [first_name] first. You go on ahead."
+
+                    j "Got it. See you outside."
+
+                    hide jasmine
+
+                    show roger casual frown
+
+                    jump roger_abandons
+
+                    "[r] leaves. You stay behind, figuring that you probably should let him and [j] head out first."
+
+                    "You are definitely messing things up. You should probably pay more attention at the next lesson before even [j] decides that you're not good company."
+
+                    jump classroom
+                
+                else:
+
+                    r "Yeah, I'm ready to go."
+
+                    j "Great. Let's go then."
+
+                    jump walk_home
 
 label walk_home:
 
@@ -593,4 +776,33 @@ label walk_home:
         y "See you then."
 
         jump classroom
+
+    if lesson == 3:
+
+        scene street_summer_day
+
+        show jasmine casual up smile
+
+        y "Thanks for walking with me."
+
+        j "No problem! I'm happy to hang out!"
+
+        j "Have you liked the German course so far?"
+
+        y "It's been fine. A bit too early to say much just yet. I mean, we've only had three lessons so far."
+
+        j "True, true."
+
+        if jasmine_approve >= jasmine_approve_friend_low and not jasmine_friend:
+
+            jump jasmine_friended
+        
+        j "Looks like we need to go our separate ways now. See you at the next lesson, okay?"
+
+        y "See you there."
+
+        "You head home while [j] heads to work. You're already looking forward to the next lesson."
+
+        jump classroom
+
 
