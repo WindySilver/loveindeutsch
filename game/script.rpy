@@ -36,6 +36,9 @@ image patrick casual smile = im.Scale("Chie/Casual/Chie_Casual_Smile.png", 523, 
 # The game starts here.
 
 label start:
+    init: 
+        transform flip: 
+            xzoom -1.0
     python:
         # Initialize the status of notes taken on each lesson. Lesson 0 has no notes, so it can be whatever. True is default for it.
         notes = [True, False, False, False, False, False, False, False, False]
@@ -45,6 +48,14 @@ label start:
         ivy_abandon = False
         roger_abandon = False
         jasmine_abandon = False
+
+        # Needed for checking if the characters have reached friendship or romance
+        ivy_friend = False
+        ivy_romance = False
+        roger_friend = False 
+        roger_romance = False
+        jasmine_friend = False
+        jasmine_romance = False
 
         # The lowest neutral approval levels for each character, needed for comparisons that need to be made during the game. 
         ivy_approve_neutral_low = 3

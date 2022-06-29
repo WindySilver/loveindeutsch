@@ -49,6 +49,8 @@ label jasmine_abandons:
 
 label jasmine_friended:
 
+    $ jasmine_friend = True
+
     j "You know, you said that you came on the German course to get friends."
 
     y "Yeah. What about that?"
@@ -63,6 +65,8 @@ label jasmine_friended:
 
 label roger_friended:
 
+    $ roger_friend = True
+
     r "Um... You know, I've been thinking..."
 
     y "About what?"
@@ -70,8 +74,6 @@ label roger_friended:
     r "Well, [n] has kept saying that you're cool and all and I could use some more friends..."
 
     r "And, um, now that I've gotten to know you a bit, um..."
-
-    return
 
     show roger casual frown
 
@@ -117,7 +119,7 @@ label roger_friended:
 
 label ivy_friended:
 
-    iv "So..."
+    $ ivy_friend = True
 
     iv "There's something I want to say. Don't interrupt me, okay?"
 
@@ -154,6 +156,8 @@ label ivy_friended:
     iv "Well, we shall hang out at school. It might do us both good... at least if Dad is to believed."
 
     "You suddenly realize that this is the first time you have ever seen [iv] smile."
+
+    "Major success!"
 
     return
 

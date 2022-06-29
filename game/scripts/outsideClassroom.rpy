@@ -99,6 +99,141 @@ label outside:
 
         jump home
 
+    if lesson == 3:
+
+        scene school_hallway_day
+
+        show jasmine casual up smile at center
+
+        show ivy side casual frown:
+            flip
+            right
+
+        show roger casual smile at left
+
+        j "I gotta go to work, so I can't hang around for long. Can we meet up tomorrow, maybe around 16?"
+
+        iv "I can't make it. Anything between 18 and 20 works tomorrow."
+
+        show roger casual frown
+
+        r "I can't make it after 19."
+
+        show jasmine casual up frown
+
+        j "What about the day after tomorrow?"
+
+        y "I can't make it then. I'll be visiting my grandparents for most of the day."
+
+        j "Okay. Then we gotta do homework in smaller groups. [r], you got time tomorrow?"
+
+        show roger casual smile
+
+        r "Yeah."
+
+        show jasmine casual up smile
+
+        j "Then we'll study together. What about you, [first_name]?"
+
+        menu:
+
+            "This would be an excellent way to get to know [j] and [r] more. Then again, you could perhaps get through to [iv] too if you studied with her."
+
+            "[iv]":
+                call all_approve
+
+                y "I'll study with you, [iv]. If it's fine with you."
+
+                iv "Sure, whatever."
+
+                j "Then it's settled. We'll see on the next lesson then. Bye now!"
+                $ ivy_approve += 1
+                $ study = "i"
+            
+            "[j] and [r]":
+                call all_approve
+
+                y "I'll study with you two if you'll have me."
+
+                j "Of course we will! Welcome aboard!"
+
+                r "Shall we see each other at the cafe at 16?"
+
+                j "Sounds good to me."
+
+                y "Agreed."
+
+                j "Good. Now, I gotta jet. See you!"
+
+                python:
+                    roger_approve += 1
+                    jasmine_approve += 1
+                    study = "rj"
+
+            "I'll study by myself.":
+                call all_approve
+
+                j "Alright. Then we'll see each other at the next lesson. Bye now!"
+                $ study = "y"
+
+            "I'll skip homework.":
+                jump all_disapprove
+
+                show jasmine casual up frown
+                show roger casual frown
+
+                if ivy_approve <= abandon_level and not ivy_abandon:
+                    jump ivy_abandons
+                    call all_disapprove
+
+                j "Seriously? Skip homework?"
+
+                y "Today's stuff was easy. I'll be fine."
+
+                j "Well-"
+
+                iv "It's your funeral."
+
+                j "Eh... I mean, I don't recommend skipping homework even if you feel you learned it all in one go, but you do you I guess."
+
+                j "Anyhoo, I gotta go now. See you at the next lesson."
+
+                $ study = "skip"
+
+        "With that, [j] left with [iv] following suit fast."
+
+        hide jasmine
+        hide ivy
+
+        if roger_approve <= abandon_level:
+            jump roger_abandons
+            $ jasmine_approve -= 1
+
+        elif roger_approve >= roger_approve_friend_low:
+
+            show roger casual frown
+
+            r "Do you have time to hang out now? I could use some company since [n] is at work."
+
+            y "[n]?"
+
+            r "Oh, right, you don't know. That's [j]'s nickname, although I don't think anyone except I use it."
+
+            y "Oh, okay."
+
+            y "I have time to hang out if you want to hang out with me."
+
+            show roger casual smile
+
+            r "I'm glad to hear that. Come, let's head out."
+
+            scene city_afternoon
+
+            jump roger_friended
+
+        jump home
+
+
 
 label home:
 
@@ -125,6 +260,25 @@ label home:
         "Since you agreed to do your homework for the German course tomorrow, you leave the materials be for the evening. At least hopefully you would get to know your fellow students a bit better then."
 
         jump school
+
+    if lesson == 3:
+
+        scene bedroom_evening
+        if study == "y":
+            "You do all the homework, including your German homework, alone in the evening. It's lonely work and you wonder if you should have studied with [iv] so that she would not have had to do the same work alone."
+
+            "Honestly, studying alone was lame after the group homework session at the cafe. You should probably do your homework with the others when you can."
+        
+        elif study == "skip":
+            "Once you were done with your other homework, you glanced at your German homework. The memory of the others' looks when you said that you'd skip doing it stung and you did consider doing the homework after all for a moment."
+            
+            "However, you were still confident you had learned the lesson's contents, so you left the homework undone."
+
+        else:
+            "Once you were done with your other homework, you glanced at your German homework. Since you had plans to do it tomorrow, you left it be."
+
+        jump school
+
 
 label school:
 
@@ -185,6 +339,63 @@ label school:
         "The bell rings. You should head back to your classes."
 
         jump cafe
+
+    if lesson == 3:
+
+        "You spot [iv] at school while Tamera is... somewhere."
+
+        if ivy_abandon:
+
+            "She also spots you and glares at you. You figure that it's for the best not to approach her."
+        
+        else:
+
+            "Since you've been getting closer to her (and Tamera isn't there to see and laugh if you get blown off again), you approach her."
+
+            show ivy side casual frown
+
+            iv "What?"
+
+            y "Hallo. Wie geht's Ihnen?"
+
+            "Ivy snorts."
+
+            iv "You know we weren't taught how to respond to that question."
+
+            y "..."
+
+            y "...Oh. {i}Oh.{/i} Good point. Sorry."
+
+            iv "No problem. At least you made the effort."
+
+            iv "What brings you to me anyway?"
+
+            y "I figured I could see if you're in the mood to talk."
+
+            iv "Well... I really am not. But since you made the effort to speak German, I guess I don't mind your company for this break."
+
+            if ivy_approve >= ivy_approve_friend_low:
+
+                iv "..."
+
+                iv "Actually... I think we could talk for a bit."
+
+                y "Really?"
+
+                iv "Yes."
+
+                jump ivy_friended
+        
+        if study == "i" or study == "jr":
+            
+            jump cafe
+        
+        else:
+            jump classroom
+
+
+
+            
 
 label cafe:
 
@@ -329,6 +540,18 @@ label cafe:
             "[r] leaves some time later, leaving you and [j] to start walking home once you are done with your exercises."
 
         jump walk_home
+
+        if lesson == 3:
+            if study == "i":
+                
+                "You meet [iv] at the cafe at 18.30."
+
+                # TODO The exercise, Ivy friendship check
+            
+            elif study == "jr":
+                
+                "You meet [j] and [r] at the cafe at 16.00."
+                # TODO The exercise, roger and jasmine friendship checks
 
 label walk_home:
 
