@@ -282,11 +282,7 @@ label classroom:
 
         show patrick casual smile
 
-        p "Today, we will discuss greetings and how to present yourself."
-
-        p "Last time, we covered the greetings \"Guten Abend\", \"Guten Tag\" and \"Hallo\"."
-
-        p "While these already cover a lot, we are missing one key phrase; \"Good Morning\", which is \"Guten Morgen\"."
+        p "Today, we will discuss how to present yourself."
 
         menu:
 
@@ -324,7 +320,54 @@ label classroom:
 
         "This time, there was no exercise in-class due to time constraints. Instead, you had to make sure you learned things properly by doing homework."
 
+    if lesson == 3:
+        show patrick casual smile
+
+        p "Guten Tag. Today, we will discuss greetings and goodbyes."
+
+        p "We have already covered some greetings in earlier lessons, the greetings being \"hallo\", \"guten Tag\" and \"guten Abend\"."
+
+        p "While these already cover a lot, we are missing one key phrase; \"Good Morning\", which is \"Guten Morgen\"."
+
+        p "As for \"Good night\", the German phrase is \"Gute Nacht\"."
+
+        menu:
+
+            "Sounds like this will be a particularly vocabulary-heavy lesson. You should probably take notes."
         
+            "You'll take notes.":
+                "You take out your pencil and notebook and start writing things down."
+                $ notes[3] = True
+            "Nah, you'll be fine with just the material.":
+                "You decide not to take notes and simply listen to the teacher."
+
+        p "When it comes to goodbyes, we've covered \"auf Wiedersehen\" - that is, \"goodbye\" - in passing."
+
+        p "A more casual way to say goodbye, similar to \"bye\" in English, is \"tschüss\"."
+
+        p "Since we've got time, there's time for an exercise."
+
+        p "I've prepared some conversations you need to translate from German into Eng-"
+
+        # TODO Play a fire alarm sound
+
+        "Suddenly, a fire alarm broke out."
+
+        show patrick casual frown
+
+        p "Oh dear. Well then, let's keep calm and head outside in an orderly manner. We will gather in the parking lot."
+
+        scene school_hallway_day
+
+        show patrick casual frown
+
+        p "Looks like we need to skip the exercise this time around. I suppose I'll assign homework here outside and everyone can leave when we get the go-ahead to get our things."
+
+
+
+    if lesson == 4:
+
+        "You have reached the end of this prototype. Thank you for playing!"
 
 
     $ lesson += 1

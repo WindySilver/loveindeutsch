@@ -31,6 +31,7 @@ image roger casual smile blush = im.Scale("Sora/Casual/Sora_Casual_Smile_Blush.p
 image roger casual open = im.Scale("Sora/Casual/Sora_Casual_Open.png", 367.2, 924)
 image roger casual open blush = im.Scale("Sora/Casual/Sora_Casual_Open_Blush.png", 367.2, 924)
 image patrick casual smile = im.Scale("Chie/Casual/Chie_Casual_Smile.png", 523, 850)
+image patrick casual frown = im.Scale("Chie/Casual/Chie_Casual_Frown.png", 523, 850)
 
 
 # The game starts here.

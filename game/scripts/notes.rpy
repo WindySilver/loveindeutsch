@@ -10,7 +10,9 @@ screen notes():
                     noteText = noteText + "{a=showmenu:note_greetings}Greetings{/a}\n"
                     noteText = noteText + "{a=showmenu:note_0_10}Numbers 0-10{/a}\n"
                 if noteIndex == 2:
-                    noteText = noteText + "{a=showmenu:morning_present}Presenting oneself + good morning{/a}\n"
+                    noteText = noteText + "{a=showmenu:present}Presenting oneself{/a}\n"
+                if noteIndex == 3:
+                    noteText = noteText + "{a=showmenu:greetings_goodbyes}More greetings + goodbyes{/a}\n"
                 else:
                     noteText = noteText + ""
             noteIndex += 1
@@ -54,6 +56,10 @@ label note_0_10:
 
     return
 
-label morning_present:
+label present:
 
-    $ renpy.call_screen("show_note", heading="Presenting oneself + good morning", notesText="Good morning = Guten Morgen\nbe named = heißen\nMy name is Patrick = Ich heiße Patrick\nI am Patrick = Ich bin Patrick\nShe is Lisa = Sie ist Lisa\nNice to meet you = Freut mich\nHow are you = wie geht's dir (with friends) or wie geht's Ihnen (more polite)")
+    $ renpy.call_screen("show_note", heading="Presenting oneself", notesText="be named = heißen\nMy name is Patrick = Ich heiße Patrick\nI am Patrick = Ich bin Patrick\nShe is Lisa = Sie ist Lisa\nNice to meet you = Freut mich\nHow are you = wie geht's dir (with friends) or wie geht's Ihnen (more polite)")
+
+label greetings_goodbyes:
+
+    $ renpy.call_screen("show_note", heading="Greetings and goodbyes", notesText="Good morning = Guten Morgen\nGood night = Gute Nacht\nAuf Wiedersehen = Goodbye\nTschüss = bye")

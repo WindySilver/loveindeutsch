@@ -234,6 +234,14 @@ label outside:
 
         jump home
 
+        if lesson == 4:
+
+            hide patrick
+
+            "Once you got your items back, you gathered together with [j], [r] and [iv]."
+
+            j "Well, that sucked big time."
+
 
 
 label home:
@@ -590,7 +598,7 @@ label cafe:
 
                         iv "Exactly."
 
-                    "They use different verbs. Sein and heißen."
+                    "They use different verbs. Sein and heißen.":
 
                         $ ivy_approve += 1
 
@@ -665,7 +673,7 @@ label cafe:
 
                         j "Precisely."
 
-                    "They use different verbs. Sein and heißen."
+                    "They use different verbs. Sein and heißen.":
 
                         $ roger_approve += 1
                         $ jasmine_approve += 1
