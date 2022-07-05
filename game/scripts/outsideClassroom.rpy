@@ -240,7 +240,121 @@ label outside:
 
             "Once you got your items back, you gathered together with [j], [r] and [iv]."
 
+            show jasmine casual up frown at center
+            show ivy side casual frown at left
+            show roger casual frown at right
+
             j "Well, that sucked big time."
+
+            y "Very much."
+
+            r "I'm going to be late from work at this rate. Can we deal with the homework tomorrow, maybe in the evening?"
+
+            iv "Sorry, I can't make it in the evening."
+
+            j "Me neither. How about the day after tomorrow?"
+
+            iv "I've got things to do that day. Tomorrow afternoon would be fine by me."
+
+            j "That's too bad. I've got tomorrow completely full already. What about you, [first_name]?"
+
+            y "I've got both tomorrow and the day after tomorrow free."
+
+            menu:
+
+                j "Well, I guess it's up to you to choose who you want to do homework with."
+
+                "[iv]" if not ivy_abandon:
+                
+                    call all_approve
+
+                    y "I'll study with you, [iv]. If it's fine with you."
+
+                    iv "Sure, whatever."
+
+                    j "Then it's settled. We'll see each other on the next lesson then."
+
+                    $ ivy_approve += 1
+                    $ study = "i"
+
+                "[j]" if not jasmine_abandon:
+                    call all_approve
+
+                    y "I'll study with you, [j], if you'll have me."
+
+                    j "Of course! See you on the day after tomorrow, in the evening then?"
+
+                    y "See you then."
+
+                    j "Excellent. The rest of us will see each other on the next lesson then."
+
+                    python:
+                        jasmine_approve += 1
+                        study = "j"
+
+                "[r]" if not roger_abandon:
+                    call all_approve
+
+                    y "I'll study with you, [r], if you'd like."
+
+                    r "Me? Okay, sure. See you tomorrow evening?"
+
+                    y "See you then."
+
+                    j "Excellent. The rest of us will see each other on the next lesson then."
+
+                    python:
+                        roger_approve += 1
+                        study = "r"
+
+                "I'll study by myself.":
+                    call all_approve
+
+                    j "Alright. Then we'll see each other at the next lesson."
+                    $ study = "y"
+
+                "I'll skip homework.":
+                    jump all_disapprove
+
+                    show jasmine casual up frown
+                    show roger casual frown
+
+                    if ivy_approve <= abandon_level and not ivy_abandon:
+                        jump ivy_abandons
+                        call all_disapprove
+
+                    j "Seriously? Skip homework?"
+
+                    y "Today's stuff was easy. I'll be fine."
+
+                    j "Well-"
+
+                    iv "It's your funeral."
+
+                    j "Eh... I mean, I don't recommend skipping homework even if you feel you learned it all in one go, but you do you I guess."
+
+                    $ study = "skip"
+            
+            r "Well, I gotta go now. See you all on the next lesson."
+
+            "Roger leaves with an unusual hurry in his step. Ivy leaves as well."
+
+            j "Well, looks like we should go on our separate ways too."
+
+            y "Yeah..."
+
+            if jasmine_abandon:
+
+                j "Actually, before you go, there's something I should say."
+
+                jump jasmine_abandons
+            
+            "You and [j] go on your separate ways."
+
+            jump home
+
+
+                
 
 
 
@@ -275,6 +389,24 @@ label home:
         scene bedroom_evening
         if study == "y":
             "You do all the homework, including your German homework, alone in the evening. It's lonely work and you wonder if you should have studied with [iv] so that she would not have had to do the same work alone."
+
+            "Honestly, studying alone was lame after the group homework session at the cafe. You should probably do your homework with the others when you can."
+        
+        elif study == "skip":
+            "Once you were done with your other homework, you glanced at your German homework. The memory of the others' looks when you said that you'd skip doing it stung and you did consider doing the homework after all for a moment."
+            
+            "However, you were still confident you had learned the lesson's contents, so you left the homework undone."
+
+        else:
+            "Once you were done with your other homework, you glanced at your German homework. Since you had plans to do it tomorrow, you left it be."
+
+        jump school
+
+    if lesson == 4:
+
+        scene bedroom_evening
+        if study == "y":
+            "You do all the homework, including your German homework, alone in the evening. It's lonely work and you wonder if you should have studied with someone else to give your studying a bit of a boost, to motivation if nowhere else."
 
             "Honestly, studying alone was lame after the group homework session at the cafe. You should probably do your homework with the others when you can."
         
@@ -402,6 +534,86 @@ label school:
         else:
             jump classroom
 
+    if lesson == 4:
+
+        "Tamera is elsewhere once again. Only now, you are starting to realize just how absent she has been in your life for a good while."
+        
+        "While looking around in boredom, you spot [iv]."
+
+        if ivy_abandon:
+
+            "She also spots you and glares at you. You figure that it's for the best not to approach her."
+        
+        if ivy_friend:
+
+            "Since you're now friends with [iv], you walk up to her."
+
+            y "Hi."
+
+            show ivy side casual frown
+
+            iv "Hi. Alone again?"
+
+            y "So it seems. Besides, I just spotted you. I would've come to you if I'd seen you earlier."
+
+            iv "I see. Well, at least you're here now. Do you want to talk about something?"
+
+            y "I don't know. I didn't really have a plan for any of this."
+
+            show ivy side casual smile
+
+            iv "Fair enough. How about we just hang out?"
+
+            y "Sounds good to me."
+
+            "You spend the rest of the breaks together. You don't talk much, but having some good company is more than enough for you. You have a feeling that [iv] does not want any more than that anyway."
+
+            "Only after you have said goodbye to [iv] upon leaving school you realize that you only saw Tamera at lessons today."
+        
+        else:
+
+            "Since you've been getting closer to her (and Tamera isn't there to see and laugh if you get blown off again), you approach her."
+
+            show ivy side casual frown
+
+            iv "What?"
+
+            y "Hallo. Wie geht's Ihnen?"
+
+            "Ivy snorts."
+
+            iv "You know we weren't taught how to respond to that question."
+
+            y "..."
+
+            y "...Oh. {i}Oh.{/i} Good point. Sorry."
+
+            iv "No problem. At least you made the effort."
+
+            iv "What brings you to me anyway?"
+
+            y "I figured I could see if you're in the mood to talk."
+
+            iv "Well... I really am not. But since you made the effort to speak German, I guess I don't mind your company for this break."
+
+            if ivy_approve >= ivy_approve_friend_low:
+
+                iv "..."
+
+                iv "Actually... I think we could talk for a bit."
+
+                y "Really?"
+
+                iv "Yes."
+
+                jump ivy_friended
+        
+        if study == "i" or study == "j" or study == "r":
+            
+            jump cafe
+        
+        else:
+            jump classroom
 
 
             
@@ -743,6 +955,372 @@ label cafe:
                     j "Great. Let's go then."
 
                     jump walk_home
+    if lesson == 4:
+
+        if study == "i":
+
+            "You meet [iv] at the cafe in the afternoon, as agreed yesterday."
+
+            if ivy_friended:
+                show ivy side casual smile
+
+            else:
+                show ivy side casual frown
+
+            y "Hi."
+
+            iv "Hi. Shall we get to the homework right away?"
+
+            y "Yeah, let's do that."
+
+            iv "Alright then. Apparently there's a bit about both goodbyes and greetings. Let's tackle the greetings first."
+
+            iv "The greeting we have covered during the lesson was \"good morning\", that was \"guten Morgen\". Do you remember the ones from the first lesson?"
+
+            y "I do."
+
+            iv "Good. Then this'll be a breeze."
+
+            y "Yup. At least this is easy."
+
+            iv "I suppose. A bit of a challenge would be nice though."
+
+            "You finish the exercise on greetings swiftly and move on to goodbyes."
+
+            iv "The only goodbyes we've covered are \"auf Wiedersehen\" and \"tschüss\", so there isn't much to do here. The former is \"goodbye\" and the latter is \"bye\"."
+
+            iv "Oh, and there's also \"good night\". That's a part of this exercise too."
+
+            menu:
+
+                iv "Do you remember what \"good night\" is in German?"
+
+                "No idea.":
+
+                    $ ivy_approve -= 2
+
+                    show ivy side casual frown
+
+                    iv "Of course..."
+
+                    iv "It's \"gute Nacht\"."
+
+                    y "Oh. Right."
+
+                    if ivy_approve <= abandon_level:
+                        jump ivy_abandons
+
+                        iv "I think we're done here."
+
+                        "[iv] leaves you alone at the cafe. You are fairly certain that you hear snickering directed towards you but you ignore it to finish your homework alone."
+
+                        "You eventually get the homework done and head back home. Hopefully the next lesson would go better."
+
+                        jump classroom
+
+                "Gute Night":
+                    show ivy side casual frown
+
+                    iv "Har har. Now be serious, will you."
+
+                    iv "It's \"gute Nacht\"."
+
+                    y "I know."
+
+                    "If Tamera was there, she would say \"no you did not\". Fortunately, she was not there (at least not within hearing distance)."
+
+                    iv "Good. Now let's remain serious. I'm not here to fool around."
+
+                "Gute Nacht":
+                    $ ivy_approve += 1
+                    
+                    iv "Indeed."
+                    
+            iv "Moving on..."
+
+            "You finish the exercise in record time thanks to [iv]'s understanding of the material."
+
+            show ivy side casual smile
+
+            iv "Huh. That went actually well."
+
+            if ivy_friend and ivy_approve >= ivy_approve_romance_low:
+
+                iv "Before we head out, there's something... something I'd like to ask of you. Do you have the time?"
+
+                y "Of course. I don't have any other plans than this meeting for today."
+
+                show ivy side casual frown
+
+                iv "Good. Good."
+
+                jump ivy_romanced
+
+            elif ivy_approve >= ivy_approve_friend_low and not ivy_friend:
+
+                iv "Before we finish for the day, there's something I'd like to talk about. Do you have some time?"
+
+                y "Sure. I don't have any other plans than this meeting for today."
+
+                iv "Good."
+
+                jump ivy_friended
+
+            iv "Alright. Time for me to head out. See you on the next lesson. And... thank you for this meeting."
+
+            y "No, thank you. See you on the next lesson."
+
+            "You go on your separate ways."
+        
+        if study == "r":
+
+            "You meet [r] at the cafe in the evening, as agreed yesterday."
+
+            show roger casual smile
+
+            r "Hi there."
+
+            y "Hi."
+
+            r "Thanks for coming. Shall we get right into the homework?"
+
+            y "Sure."
+
+            r "Alright then. It seems like there's a bit about both goodbyes and greetings. Let's tackle the greetings first, shall we?"
+
+            y "Sounds good to me."
+
+            r "Good. The greeting we covered during the lesson was \"good morning\", that was \"guten Morgen\", I think. We had greetings on the first lesson, too."
+
+            r "We should be fine, right?"
+
+            y "Yeah."
+
+            r "Let's get to it then."
+
+            "You start working on the exercise on greetings and finish it swiftly before moving on to goodbyes."
+
+            r "I think the only goodbyes we've covered are \"auf Wiedersehen\" and \"tschüss\", so there isn't much to do here. The former is \"goodbye\" and the latter is \"bye\"."
+
+            iv "Oh, right, and there's also \"good night\". I always forget it's a goodbye."
+            
+            show roger casual frown
+
+            menu:
+                
+                r "What was \"good night\" is in German again?"
+
+                "No idea.":
+
+                    $ roger_approve -= 1
+
+                    r "Ah... Well, let me check my notes."
+
+                    r "It's \"gute Nacht\"."
+
+                    y "Oh. Right."
+
+                    if roger_approve <= abandon_level:
+                        jump roger_abandons
+
+                        "[r] leaves you alone at the cafe. You are fairly certain that someone in the neighbouring table is talking about you but you ignore it in favor of finishing your homework."
+
+                        "You eventually get the homework done and head back home. Hopefully the next lesson would go better."
+
+                        jump classroom
+
+                "Gute Night":
+                    show roger casual smile
+
+                    r "Haha, that's funny."
+
+                    r "Jokes aside, it's \"gute Nacht\"."
+
+                    y "I know."
+
+                    "If Tamera was there, she would say \"no you did not\". Fortunately, she was not there (at least not within hearing distance)."
+
+                    r "I figured that you knew."
+
+                "Gute Nacht":
+
+                    show roger casual smile
+
+                    $ roger_approve += 1
+                    
+                    r "That's correct."
+                    
+            r "Well then, let's move on."
+
+            "You finish the exercise in record time thanks to [r]'s help."
+
+            show roger casual smile
+
+            r "Ah, good. We're done with the homework."
+
+            if roger_friend and roger_approve >= roger_approve_romance_low:
+
+                show roger casual frown
+
+                r "Um... are you in a hurry to go back home?"
+
+                y "No. I've still got plenty of time before I need to get back home."
+
+                r "O-okay... That's... that's good.."
+
+                r "I... I think there's something I should talk about with you."
+
+                y "Okay."
+
+                jump roger_romanced
+
+            elif roger_approve >= roger_approve_friend_low and not roger_friend:
+
+                show roger casual frown
+
+                r "Um... are you in a hurry to go back home?"
+
+                y "No. I've still got time before I need to leave."
+
+                r "Ah, good... I'd like to hang out for a bit... I could use some company since [n] is at work."
+
+                y "[n]?"
+
+                r "Oh, right, you don't know. That's [j]'s nickname, although I don't think anyone except I use it."
+
+                y "Oh, okay."
+
+                y "Well, I do have time to hang out if you want to hang out with me."
+
+                show roger casual smile
+
+                r "I'm glad to hear that. I... I'd like to talk with you a bit more, after all..."
+
+                jump roger_friended
+
+            r "I guess we should get going. Thanks for today."
+
+            y "No, thank you. See you on the next lesson."
+
+            "You go on your separate ways."
+
+            jump classroom
+
+        if study == "j":
+
+            "You meet [j] at the cafe in the evening, as agreed on the day before yesterday."
+
+            show jasmine casual up smile
+
+            j "Hii!"
+
+            y "Hi."
+
+            j "Thanks for making the time to do the homework with me."
+            
+            y "No problem."
+            
+            j "Well, let's get straight into work, shall we?"
+
+            y "Sure."
+
+            j "So, there's exercises on both goodbyes and greetings. How about we tackle the greetings first?"
+
+            y "Sounds good to me."
+
+            j "Great! The greeting we covered during the lesson was \"good morning\", which is \"guten Morgen\". That goes on top of the greetings from the first lesson."
+
+            j "We've definitely got this, don't you think?"
+
+            y "Definitely."
+
+            j "I was hoping you'd say that."
+
+            "You start working on the exercise on greetings and finish it swiftly before moving on to goodbyes."
+
+            j "Now, to the goodbyes... We've covered \"auf Wiedersehen\", which is \"goodbye\", and  \"tschüss\", which is \"bye\", and also the phrase for \"good night\"."
+
+            menu:
+
+                j "Do you remember what's \"good night\" in German?"
+
+                "No idea.":
+
+                    $ jasmine_approve -= 1
+
+                    show jasmine casual up frown
+
+                    j "Oh... Well, it's \"gute Nacht\"."
+
+                    y "Oh. Right."
+
+                    if jasmine_approve <= abandon_level:
+                        jump jasmine_abandons
+
+                        "[j] leaves you alone at the cafe. You are fairly certain that the laughter coming from the neighbouring table is aimed at you but you ignore it in favor of finishing your homework."
+
+                        "You eventually get the homework done and head back home. Hopefully the next lesson would go better."
+
+                        jump classroom
+
+                "Gute Night":
+
+                    "[j] snorts."
+
+                    j "I can't believe you got something like a laugh out of me with a bad joke like that."
+
+                    j "Anyhoo, it's \"gute Nacht\"."
+
+                    y "I know."
+
+                    "If Tamera was there, she would say \"no you did not\". Fortunately, she was not there (at least not within hearing distance)."
+
+                    j "Just as I expected."
+
+                "Gute Nacht":
+
+                    $ jasmine_approve += 1
+                    
+                    j "Yup. That's the phrase."
+                    
+            j "Let's take on that exercise then!"
+
+            "You finish the exercise in record time thanks to [j]'s help."
+
+            show jasmine casual up smile
+
+            j "And that's done!"
+
+            if jasmine_friended and jasmine_approve >= jasmine_approve_romance_low:
+
+                j "I know it's getting a bit late, but would you mind sticking around for a bit?"
+
+                y "I don't mind. Is there something on your mind?"
+
+                j "Yes, there is."
+
+                jump jasmine_romanced
+
+            elif jasmine_approve >= jasmine_approve_friend_low and not jasmine_friend:
+
+                j "I know it's getting a bit late, but would you mind staying for a bit?"
+
+                y "I don't mind. Do you want to talk about something?"
+
+                j "I do."
+
+                jump jasmine_friended
+
+            j "Again, thanks for coming today."
+
+            y "No, thank you. Shall we walk home together?"
+
+            j "Sounds good to me."
+
+            "You head out into the evening."
+
+            jump walk_home
+
 
 label walk_home:
 
@@ -813,4 +1391,23 @@ label walk_home:
 
         jump classroom
 
+    if lesson == 4:
+
+        scene street_summer_evening
+
+        show jasmine casual up smile
+
+        "You walk with [j], talking about this and that."
+
+        j "Oh, we're already here. Walks home sure are faster when you have someone to talk with."
+
+        y "Yup!"
+
+        j "Well, I guess we'll see each other on the next lesson then. See you then."
+
+        y "See you!"
+
+        "You and [j] go on your separate ways. You are already looking forward to your next lesson a lot."
+
+        jump classroom
 

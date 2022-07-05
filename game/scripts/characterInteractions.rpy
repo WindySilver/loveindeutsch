@@ -1,5 +1,8 @@
 label ivy_abandons:
-    $ ivy_abandon = True
+    python:
+        ivy_abandon = True
+        ivy_friend = False
+        ivy_romance = False
             
     ivm "You're not trying at all, are you? Why did you even enroll on the course?"
 
@@ -14,7 +17,10 @@ label ivy_abandons:
     return
 
 label roger_abandons:
-    $ roger_abandon = True
+    python:
+        roger_abandon = True
+        roger_friend = False
+        roger_romance = False
             
     rg "Look, this isn't working out."
 
@@ -31,7 +37,10 @@ label roger_abandons:
     return
 
 label jasmine_abandons:
-    $ jasmine_abandon = True
+    python:
+        jasmine_abandon = True
+        jasmine_friend = False
+        jasmine_romance = False
             
     "[js] sighs."
 
@@ -48,8 +57,10 @@ label jasmine_abandons:
     return
 
 label jasmine_friended:
-
-    $ jasmine_friend = True
+    python:
+        jasmine_abandon = False
+        jasmine_friend = True
+        jasmine_romance = False
 
     j "You know, you said that you came on the German course to get friends."
 
@@ -64,8 +75,10 @@ label jasmine_friended:
     return
 
 label roger_friended:
-
-    $ roger_friend = True
+    python:
+        roger_abandon = False
+        roger_friend = True
+        roger_romance = False
 
     r "Um... You know, I've been thinking..."
 
@@ -118,8 +131,10 @@ label roger_friended:
     return
 
 label ivy_friended:
-
-    $ ivy_friend = True
+    python:
+        ivy_abandon = False
+        ivy_friend = True
+        ivy_romance = False
 
     iv "There's something I want to say. Don't interrupt me, okay?"
 
@@ -161,4 +176,33 @@ label ivy_friended:
 
     return
 
+label ivy_romanced:
+    python:
+        ivy_abandon = False
+        ivy_friend = False
+        ivy_romance = True
 
+    "Ivy's romance needs to be done."
+
+    return
+
+label roger_romanced:
+    python:
+        roger_abandon = False
+        roger_friend = False
+        roger_romance = True
+
+    "Roger's romance needs to be done."
+
+    return
+
+
+label jasmine_romanced:
+    python:
+        jasmine_abandon = False
+        jasmine_friend = False
+        jasmine_romance = True
+
+    "Jasmine's romance needs to be done."
+
+    return
