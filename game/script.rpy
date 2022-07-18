@@ -58,6 +58,11 @@ label start:
         jasmine_friend = False
         jasmine_romance = False
 
+        # Needed for tracking whether or not the player has rejected the romance from a character
+        ivy_reject = False
+        roger_reject = False
+        jasmine_reject = False
+
         # The lowest neutral approval levels for each character, needed for comparisons that need to be made during the game. 
         ivy_approve_neutral_low = 3
         roger_approve_neutral_low = 5

@@ -182,7 +182,55 @@ label ivy_romanced:
         ivy_friend = False
         ivy_romance = True
 
-    "Ivy's romance needs to be done."
+    iv "So, well, the thing is..."
+
+    iv "I'm not the kind of person to fall for anyone. At least I think I don't have a type."
+
+    iv "But... well..."
+
+    iv "It turns out that I did fall for someone."
+
+    iv "I don't know how or when but I fell for you."
+
+    menu:
+
+        iv "So, the thing I want to ask is... do you feel the same?"
+
+        "I do, actually.":
+            # TODO show Ivy blushing
+
+            iv "Oh. I... I see. Well... if we feel the same way, then... shall we... become a thing?"
+
+            y "I'd love that."
+
+            show ivy side casual smile
+
+            iv "Alright. Then... then we'll be a couple from now on, I guess."
+
+            "Score!!!"
+
+            y "Indeed."
+
+        "I'm sorry, but I don't.":
+            $ ivy_reject = True
+
+            iv "Oh. I see."
+
+            show ivy side casual smile
+
+            iv "Well.. that does actually make things easier. I don't have to figure out how to slot a partner into my life this way."
+
+            iv "Thank you for being honest with me."
+
+            y "No problem. Can we stay friends?"
+
+            iv "Of course. I wouldn't have it any other way."
+
+            "Even though you just rejected someone, you feel strangely good about it. How strange."
+
+            "Perhaps it was just that you were honest with yourself - you could not see a future with [iv] as your girlfriend, after all."
+
+    iv "Well, that was all I had to say about this topic."
 
     return
 
@@ -192,7 +240,77 @@ label roger_romanced:
         roger_friend = False
         roger_romance = True
 
-    "Roger's romance needs to be done."
+    r "So, um, well..."
+
+    show roger casual frown blush
+
+    r "Uh..."
+
+    y "Take your time."
+
+    r "Thanks. Um..."
+
+    r "Eh, best just to rip the bandaid off."
+
+    r "I'm in love with you, [first_name]."
+
+    "...Oh."
+
+    r "There. I... I said it. Phew..."
+
+    r "And [n] said that it wouldn't be so difficult..."
+
+    menu:
+
+        r "So, uh, now that you know... What... do you think?"
+
+        "I'm in love with you too.":
+            
+            # TODO show surprised Roger?
+
+            r "Really? As in, you... you mean it?"
+
+            y "Uh-huh."
+
+            r "Wow..."
+
+            r "I... I always thought that it was one-sided..."
+
+            r "Well, um, since... we both feel that way... um... how about..."
+
+            r "How about we become a couple? Go on dates and... so on...?"
+
+            y "I'd love to."
+
+            show roger casual smile blush
+
+            r "Then it's settled. I... Thank you, [first_name]. Thank you."
+
+            "Score!!"
+
+        "I'm sorry, but I don't feel the same way.":
+
+            $ roger_reject = True
+
+            r "Ah. I... I actually had a feeling you might say that."
+
+            r "Well, that's... that's fine. I understand."
+
+            r "Um... can we still stay friends, though? I really like spending time with you."
+
+            y "Naturally."
+
+            show roger casual smile blush
+
+            r "I'm glad. Thank you... And thanks for being honest with me rather than stringing me along."
+
+            y "No problem."
+
+            "Even though you just rejected someone, you feel strangely good about it. How strange."
+
+            "Perhaps it was just that you were honest with yourself - you could not see a future with [r] as your boyfriend, after all."
+
+    r "That's all I wanted to talk about."
 
     return
 
@@ -203,6 +321,56 @@ label jasmine_romanced:
         jasmine_friend = False
         jasmine_romance = True
 
-    "Jasmine's romance needs to be done."
+    j "I'm going to be blunt here. I have a crush on you."
+
+    "You blink. That was... very fast."
+
+    show jasmine casual up frown
+
+    menu:
+
+        j "Do you happen to feel the same towards me?"
+
+        "Actually, I do.":
+
+            show jasmine casual up smile
+
+            j "I'm glad to hear that."
+
+            j "In that case, how about you and I become a couple?"
+
+            y "I'd love that."
+
+            j "Great!"
+
+            j "Then you get the ultra-rare privilege of calling me [n]."
+
+            j "The only other person who gets to call me that is [r]."
+
+            y "Wow. Thank you."
+
+            j "No problem. Thanks for agreeing to be with me."
+
+        "I'm sorry, I don't.":
+
+            $ jasmine_reject = True
+
+            j "I see... Very well. That cannot be forced."
+
+            show jasmine casual up smile
+
+            j "Thanks for being honest with me. I'd very much rather have a rejection than strung along, after all."
+
+            j "Still, I hope that this doesn't change our friendship."
+
+            y "Don't worry, this doesn't change it."
+
+            j "Good."
+
+            "Even though you just rejected someone, you feel strangely good about it. How strange."
+
+            "Perhaps it was just that you were honest with yourself - you could not see a future with [j] as your partner, after all."
+        
+    j "That's all I wanted to talk to you about."
 
     return
