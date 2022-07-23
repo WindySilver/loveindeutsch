@@ -37,6 +37,9 @@ image patrick casual frown = im.Scale("Chie/Casual/Chie_Casual_Frown.png", 523, 
 # The game starts here.
 
 label start:
+
+    play music "audio/Calm Loop.ogg" loop
+
     init: 
         transform flip: 
             xzoom -1.0
@@ -93,7 +96,7 @@ label start:
     
     "In the meantime, you can enjoy the cocoa."
     
-    # TODO Play a notification sound
+    play sound "audio/notification-3.ogg" volume 2.0
     
     "You check your phone again. Tamera has sent a message."
     

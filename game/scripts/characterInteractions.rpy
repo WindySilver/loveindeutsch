@@ -1,4 +1,7 @@
 label ivy_abandons:
+
+    play music "audio/The Puzzle Loop.ogg" loop
+
     python:
         ivy_abandon = True
         ivy_friend = False
@@ -17,6 +20,9 @@ label ivy_abandons:
     return
 
 label roger_abandons:
+
+    play music "audio/The Puzzle Loop.ogg" loop
+    
     python:
         roger_abandon = True
         roger_friend = False
@@ -37,6 +43,9 @@ label roger_abandons:
     return
 
 label jasmine_abandons:
+
+    play music "audio/The Puzzle Loop.ogg" loop
+    
     python:
         jasmine_abandon = True
         jasmine_friend = False
@@ -57,6 +66,9 @@ label jasmine_abandons:
     return
 
 label jasmine_friended:
+
+    play music "audio/Mazit Music Loop.ogg" loop
+    
     python:
         jasmine_abandon = False
         jasmine_friend = True
@@ -75,6 +87,9 @@ label jasmine_friended:
     return
 
 label roger_friended:
+
+    play music "audio/Mazit Music Loop.ogg" loop    
+
     python:
         roger_abandon = False
         roger_friend = True
@@ -131,6 +146,9 @@ label roger_friended:
     return
 
 label ivy_friended:
+
+    play music "audio/Mazit Music Loop.ogg" loop    
+
     python:
         ivy_abandon = False
         ivy_friend = True
@@ -177,6 +195,9 @@ label ivy_friended:
     return
 
 label ivy_romanced:
+
+    play music "audio/LandingPage Loop.ogg" loop
+
     python:
         ivy_abandon = False
         ivy_friend = False
@@ -235,6 +256,10 @@ label ivy_romanced:
     return
 
 label roger_romanced:
+
+    play music "audio/LandingPage Loop.ogg" loop
+
+
     python:
         roger_abandon = False
         roger_friend = False
@@ -316,6 +341,10 @@ label roger_romanced:
 
 
 label jasmine_romanced:
+
+    play music "audio/LandingPage Loop.ogg" loop
+
+
     python:
         jasmine_abandon = False
         jasmine_friend = False

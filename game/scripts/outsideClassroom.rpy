@@ -1,4 +1,6 @@
 label outside:
+
+    play music "audio/Calm Loop.ogg" loop if_changed
     
     if lesson == 1:
         
@@ -360,6 +362,8 @@ label outside:
 
 label home:
 
+    play music "audio/Friday Afternoon Loop.ogg" loop
+
     if lesson == 1:
 
         scene bedroom_evening
@@ -422,6 +426,8 @@ label home:
 
 
 label school:
+
+    play music "audio/Monday Morning Loop.ogg" loop if_changed
 
     scene school_hallway_day
 
@@ -619,6 +625,8 @@ label school:
             
 
 label cafe:
+
+    play music "audio/Calm Loop.ogg" loop if_changed
 
     scene cafeteria_day
 
@@ -844,7 +852,7 @@ label cafe:
                 
                 "You meet [j] and [r] at the cafe at 16.00."
 
-                show jasmine side casual smile at left
+                show jasmine casual smile at left
                 show roger casual smile at right
 
                 j "Hi!"
@@ -1323,6 +1331,8 @@ label cafe:
 
 
 label walk_home:
+
+    play music "audio/Calm Loop.ogg" loop if_changed
 
     if lesson == 2:
 

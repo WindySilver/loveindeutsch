@@ -1,4 +1,6 @@
 label classroom:
+
+    play music "audio/Monday Morning Loop.ogg" loop if_changed
     
     scene classroom_day
     
@@ -349,7 +351,7 @@ label classroom:
 
         p "I've prepared some conversations you need to translate from German into Eng-"
 
-        # TODO Play a fire alarm sound
+        play sound "audio/fire-alarm.wav"
 
         "Suddenly, a fire alarm broke out."
 
