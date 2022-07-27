@@ -90,6 +90,8 @@ label roger_friended:
 
     play music "audio/Mazit Music Loop.ogg" loop    
 
+    show roger casual smile
+
     python:
         roger_abandon = False
         roger_friend = True
@@ -218,7 +220,7 @@ label ivy_romanced:
         iv "So, the thing I want to ask is... do you feel the same?"
 
         "I do, actually.":
-            # TODO show Ivy blushing
+            show ivy side casual frown blush
 
             iv "Oh. I... I see. Well... if we feel the same way, then... shall we... become a thing?"
 
@@ -291,7 +293,7 @@ label roger_romanced:
 
         "I'm in love with you too.":
             
-            # TODO show surprised Roger?
+            show roger casual open blush
 
             r "Really? As in, you... you mean it?"
 

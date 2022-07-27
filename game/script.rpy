@@ -21,7 +21,9 @@ define e = Character("Everyone")
 
 # Declare character sprites
 image ivy side casual frown = im.Scale("Miki/Pose_C/Casual/Miki_PoseC_Casual_Frown.png", 270, 785.4)
+image ivy side casual frown blush = im.Scale("Miki/Pose_C/Casual/Miki_PoseC_Casual_Frown_Blush.png", 270, 785.4)
 image ivy side casual smile = im.Scale("Miki/Pose_C/Casual/Miki_PoseC_Casual_Smile.png", 270, 785.4)
+image ivy side casual smile blush = im.Scale("Miki/Pose_C/Casual/Miki_PoseC_Casual_Smile_Blush.png", 270, 785.4)
 image jasmine casual up smile = im.Scale("Hana/Casual/Hana_casual_smile.png", 464.4, 894.6)
 image jasmine casual up frown = im.Scale("Hana/Casual/Hana_casual_neutral.png", 464.4, 894.6)
 image roger casual frown = im.Scale("Sora/Casual/Sora_Casual_Frown.png", 367.2, 924)

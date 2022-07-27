@@ -81,7 +81,7 @@ label classroom:
         
         jj "I can go next. I retired recently and now I finally have some time to study languages. I have wanted to study German for years."
         
-        er "I'm heading to Austria for a business trip, to I need some understanding of German."
+        er "I'm heading to Austria for a business trip, so I need some understanding of German."
         
         sl "I'm going on the same trip as Eileen. I did study German in school, but it's been years and I've forgotten everything, so I decided to come with."
         
@@ -136,6 +136,8 @@ label classroom:
         
     if lesson == 1:
 
+        show patrick casual smile at left
+
         p "Guten Abend. That's German for \"Good evening\". Today, we will cover greetings and the numbers from 0 to 10."
 
         p "First, greetings. Like I said earlier, \"guten Abend\" means \"good evening\". To say \"good afternoon\", you say \"guten Tag\"."
@@ -155,7 +157,7 @@ label classroom:
 
         p "If you want to say \"goodbye\" in German, you can say \"auf Wiedersehen\"."
 
-        p "We will discuss greetings and goodbyes in greater detail on a later lesson. Now, let's move on to numbers."
+        p "We will discuss goodbyes in greater detail on a later lesson. Now, let's move on to numbers."
 
         "The slide changes to show a list of numbers."
 
@@ -216,6 +218,8 @@ label classroom:
         p "Excellent work, everyone. Next, let's get up from the chairs and talk. I want you all to talk to your fellow students at random and have a following discussion: greeting, telling a number of your choice and saying goodbye."
 
         p "To say \"My number is\", say \"Meine Nummer ist\"."
+
+        hide patrick
 
         "The room is filled with the sound of scraping chairs. You try to figure out who to talk with. The first one you make eye contact is [rg]. You walk up to him."
 
@@ -298,11 +302,13 @@ label classroom:
 
         p "Presenting oneself is the main focus of this lesson. Today, you will learn how to tell your name, how to present someone else and how to say \"nice to meet you\"."
 
-        p "Let's start with telling your name. German has its own verb for \"be named\" - \"heißen\" with Eszett."
+        p "Let's start with telling your name. German has its own verb for \"be named\" - \"heißen\" with an Eszett."
 
         p "We will discuss verb conjugation at a later lesson, but for now you'll need to know that when you speak of yourself, as in \"I\", most verbs lose the \"n\" in the end."
 
-        p "Therefore, \"My name is Patrick\" is \"Ich heiße Patrick\" in German."
+        p "When you speak of someone else, as in \"she\" or \"he\", the \"en\" at the end of the verb is replaced with a \"t\"."
+
+        p "Therefore, \"My name is Patrick\" is \"Ich heiße Patrick\" in German, while \"Her name is Lisa\" becomes \"Sie heißt Lisa\"."
 
         p "You can also tell your name with the irregular \"be\" verb, \"sein\". When you speak of yourself, \"sein\" becomes \"bin\", while speaking of someone else, as in \"he, she or they\", it becomes \"ist\"."
 

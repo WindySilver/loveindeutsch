@@ -564,7 +564,7 @@ screen about():
             if gui.about:
                 text "[gui.about!t]\n"
 
-            text _("Writing and programming: Noora \"WindySilver\" Jokela.\n\nArt used: Anime Backgrounds, Miki - Free Character Sprite, Hana - Free Character Sprite and Sora - Free Character Sprite and Chie - Free Character Sprite all by {a=https://noranekogames.itch.io/}Noraneko Games{/a}.\n\nAudio used: Notification 3.ogg by melokacool licensed under CC0 1.0, Fire Alarm.wav by nigelcoop licensed under CC0 1.0.\n\n{a=https://timbeek.itch.io/royalty-free-music-pack-volume-2}Music{/a} by timbeek.com.\n\nMade with {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]")
+            text _("Writing and programming: Noora \"WindySilver\" Jokela.\n\nArt used: Anime Backgrounds, Miki - Free Character Sprite, Hana - Free Character Sprite and Sora - Free Character Sprite and Chie - Free Character Sprite all by {a=https://noranekogames.itch.io/}Noraneko Games{/a}.\n\nAudio used: Notification 3.ogg by melokacool licensed under CC0 1.0, Fire Alarm.wav by nigelcoop licensed under CC0 1.0.\n\nMusic used: {a=https://timbeek.itch.io/royalty-free-music-pack}Royalty Free Music Pack{/a} and {a=https://timbeek.itch.io/royalty-free-music-pack-volume-2}Royalty Free Music Pack Volume 2{/a} by timbeek.com.\n\nMade with {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]")
 
 
 style about_label is gui_label
